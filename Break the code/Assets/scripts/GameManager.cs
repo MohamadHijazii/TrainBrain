@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI res;
     public Transform pan;
     public TextMeshProUGUI result;
+    public GameObject winPanel;
 
     void Start()
     {
@@ -23,7 +25,8 @@ public class GameManager : MonoBehaviour
         index = N-1;
         screen.text = "";
         result.text = "";
-        choice = new int[N  ];        
+        winPanel.SetActive(false);
+        choice = new int[N];        
         for(int i = 0; i < 9; i++)
         {
             int c = i;
@@ -31,20 +34,34 @@ public class GameManager : MonoBehaviour
             btns[i].onClick.AddListener(() => changeNumber(c+1));
         }
         generateNumber(N);
-
-
-        
-
-
-
-
-
     }
 
     
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.Keypad1))
+            changeNumber(1);
+        if (Input.GetKey(KeyCode.Keypad2))
+            changeNumber(2);
+        if (Input.GetKey(KeyCode.Keypad3))
+            changeNumber(3);
+        if (Input.GetKey(KeyCode.Keypad4))
+            changeNumber(4);
+        if (Input.GetKey(KeyCode.Keypad5))
+            changeNumber(5);
+        if (Input.GetKey(KeyCode.Keypad6))
+            changeNumber(6);
+        if (Input.GetKey(KeyCode.Keypad7))
+            changeNumber(7);
+        if (Input.GetKey(KeyCode.Keypad8))
+            changeNumber(8);
+        if (Input.GetKey(KeyCode.Keypad9))
+            changeNumber(9);
+        if (Input.GetKey(KeyCode.KeypadEnter))
+            comp();
+        if (Input.GetKey(KeyCode.Keypad0) || Input.GetKey(KeyCode.C))
+            clear();
+
     }
 
     public void changeNumber(int n) {
@@ -85,15 +102,15 @@ public class GameManager : MonoBehaviour
     public void comp() {
         if (index > 0)
             return;
+        if (win()) {
+            afterWin();
+        }
         string new_data = "";
         new_data += arToString_R(choice);
         new_data += "  ";
         new_data += compare();
-        result.text += new_data;
-        result.text += "\n";
+        result.text = new_data + "\n"+ result.text;
         
-        
-
 
     }
 
@@ -111,8 +128,6 @@ public class GameManager : MonoBehaviour
             } while (belong(num, temp));
             num[index] = temp;
         }
-
-        Debug.Log(arToString_R(num));
     }
 
     private bool belong(int []ar,int n) {
@@ -193,5 +208,18 @@ public class GameManager : MonoBehaviour
                 count++;}
         }
         return count;
+    }
+
+    private bool win() {
+        return getStars() == 4;
+    }
+
+    private void afterWin() {
+        winPanel.SetActive(true);
+    }
+
+
+    public void restart() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

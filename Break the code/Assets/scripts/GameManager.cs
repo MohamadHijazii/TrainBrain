@@ -5,19 +5,22 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class GameManager : MonoBehaviour
 {
     
     public Button []btns;
-    public int[] num;
-    public int[] choice;
-    public int index;
-    public int N;
-    public Text screen;  
+    int[] num;
+    int[] choice;
+    int index;
+    int N;
+    public TextMeshProUGUI screen;  
     public TextMeshProUGUI res;
-    public Transform pan;
+    public GameObject pan;
     public TextMeshProUGUI result;
     public GameObject winPanel;
+    public AudioSource click;
+    public AudioClip clip;
 
     void Start()
     {
@@ -29,42 +32,45 @@ public class GameManager : MonoBehaviour
         choice = new int[N];        
         for(int i = 0; i < 9; i++)
         {
-            int c = i;
-            btns[i].GetComponentInChildren<Text>().text = (c+1) + "";
-            btns[i].onClick.AddListener(() => changeNumber(c+1));
+            int c = i+1;
+            //btns[i].GetComponentInChildren<Text>().text = (c + 1) + "";
+            btns[i].onClick.AddListener(() => changeNumber(c));
+
         }
         generateNumber(N);
+        Debug.Log(arToString_R(num));
     }
 
     
     void Update()
     {
-        if (Input.GetKey(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.Keypad1))
             changeNumber(1);
-        if (Input.GetKey(KeyCode.Keypad2))
+        if (Input.GetKeyDown(KeyCode.Keypad2))
             changeNumber(2);
-        if (Input.GetKey(KeyCode.Keypad3))
+        if (Input.GetKeyDown(KeyCode.Keypad3))
             changeNumber(3);
-        if (Input.GetKey(KeyCode.Keypad4))
+        if (Input.GetKeyDown(KeyCode.Keypad4))
             changeNumber(4);
-        if (Input.GetKey(KeyCode.Keypad5))
+        if (Input.GetKeyDown(KeyCode.Keypad5))
             changeNumber(5);
-        if (Input.GetKey(KeyCode.Keypad6))
+        if (Input.GetKeyDown(KeyCode.Keypad6))
             changeNumber(6);
-        if (Input.GetKey(KeyCode.Keypad7))
+        if (Input.GetKeyDown(KeyCode.Keypad7))
             changeNumber(7);
-        if (Input.GetKey(KeyCode.Keypad8))
+        if (Input.GetKeyDown(KeyCode.Keypad8))
             changeNumber(8);
-        if (Input.GetKey(KeyCode.Keypad9))
+        if (Input.GetKeyDown(KeyCode.Keypad9))
             changeNumber(9);
-        if (Input.GetKey(KeyCode.KeypadEnter))
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
             comp();
-        if (Input.GetKey(KeyCode.Keypad0) || Input.GetKey(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.Keypad0) || Input.GetKeyDown(KeyCode.C))
             clear();
 
     }
 
     public void changeNumber(int n) {
+        click.PlayOneShot(clip);    
         if (belong(choice, n))
             return;
         if (index < 0)
@@ -100,8 +106,9 @@ public class GameManager : MonoBehaviour
         return res;
     }
     public void comp() {
-        if (index > 0)
+        if (index >= 0)
             return;
+        
         if (win()) {
             afterWin();
         }
@@ -216,10 +223,8 @@ public class GameManager : MonoBehaviour
 
     private void afterWin() {
         winPanel.SetActive(true);
+        result.enabled = false;
+        pan.SetActive(false);
     }
 
-
-    public void restart() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
 }

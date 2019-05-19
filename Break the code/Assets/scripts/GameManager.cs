@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    
+    public int sceneType;
+
     public Button []btns;
     int[] num;
     int[] choice;
@@ -21,6 +22,8 @@ public class GameManager : MonoBehaviour
     public GameObject winPanel;
     public AudioSource click;
     public AudioClip clip;
+    public TextMeshProUGUI tries;
+    int t;
 
     void Start()
     {
@@ -29,7 +32,8 @@ public class GameManager : MonoBehaviour
         screen.text = "";
         result.text = "";
         winPanel.SetActive(false);
-        choice = new int[N];        
+        choice = new int[N];
+        t = 0;
         for(int i = 0; i < 9; i++)
         {
             int c = i+1;
@@ -117,7 +121,8 @@ public class GameManager : MonoBehaviour
         new_data += "  ";
         new_data += compare();
         result.text = new_data + "\n"+ result.text;
-        
+        t++;
+        tries.text = t.ToString();
 
     }
 
@@ -129,7 +134,7 @@ public class GameManager : MonoBehaviour
         while ((index--) != 0) {
             do
             {
-                temp = Random.Range(1, 9);
+                temp = Random.Range(1, 10);
                 //num[index] = temp;
 
             } while (belong(num, temp));
@@ -225,6 +230,10 @@ public class GameManager : MonoBehaviour
         winPanel.SetActive(true);
         result.enabled = false;
         pan.SetActive(false);
+        if(Scenes.bestScore > t)
+        {
+            PlayerPrefs.SetInt("bestScori", t);
+        }
     }
 
 }

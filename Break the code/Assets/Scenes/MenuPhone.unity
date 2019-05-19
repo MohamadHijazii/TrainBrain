@@ -143,11 +143,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 736102582}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 57, y: -203}
+  m_AnchoredPosition: {x: 0, y: -320}
   m_SizeDelta: {x: 163.4, y: 153.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &197597276
@@ -300,10 +300,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 720, y: 1280}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -344,8 +344,8 @@ RectTransform:
   m_Children:
   - {fileID: 990003287}
   - {fileID: 1068612836}
-  - {fileID: 1065311358}
   - {fileID: 197597275}
+  - {fileID: 1065311358}
   - {fileID: 1395997850}
   - {fileID: 1541308759}
   m_Father: {fileID: 0}
@@ -469,8 +469,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13, y: 198}
-  m_SizeDelta: {x: 1128.2, y: 268.6}
+  m_AnchoredPosition: {x: 0, y: 396}
+  m_SizeDelta: {x: 720, y: 464.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &990003288
 MonoBehaviour:
@@ -566,7 +566,7 @@ MonoBehaviour:
     spaceCount: 1
     wordCount: 2
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
@@ -624,7 +624,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0b49985e72793d47b7dd5c6775e75cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneType: 3
   buttonClick: {fileID: 0}
   music: {fileID: 0}
   soundBtn: {fileID: 0}
@@ -676,11 +675,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 736102582}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 347, y: -203}
+  m_AnchoredPosition: {x: 0, y: -490}
   m_SizeDelta: {x: 163.4, y: 153.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1065311359
@@ -820,7 +819,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -233, y: -203}
+  m_AnchoredPosition: {x: 0, y: -150}
   m_SizeDelta: {x: 163.4, y: 153.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1068612837
@@ -1138,7 +1137,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -177.7, y: -3.7}
+  m_AnchoredPosition: {x: 2, y: 128}
   m_SizeDelta: {x: 499.1, y: 123.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1395997851
@@ -1161,7 +1160,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Best Score: '
+  m_text: Best Score
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -1230,9 +1229,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1395997851}
-    characterCount: 12
+    characterCount: 10
     spriteCount: 0
-    spaceCount: 2
+    spaceCount: 1
     wordCount: 2
     linkCount: 0
     lineCount: 1
@@ -1364,7 +1363,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 133.9, y: -3.7}
+  m_AnchoredPosition: {x: -6, y: 0}
   m_SizeDelta: {x: 145, y: 123.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1541308760

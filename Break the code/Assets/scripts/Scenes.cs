@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class Scenes : MonoBehaviour
 {
@@ -11,16 +12,28 @@ public class Scenes : MonoBehaviour
     public Button soundBtn;
     public Sprite soundOn;
     public Sprite soundOff;
-
+    public static int bestScore;
+    public TextMeshProUGUI bs;
 
     private void Start()
     {
-        if(soundBtn.image.sprite != null)
+        
+        //PlayerPrefs.SetInt("bestScori", 10000);
+        bestScore = PlayerPrefs.GetInt("bestScori",10000);
+        if (bestScore == 10000)
+        {
+            bs.text = "NO";
+
+        }
+        else
+            bs.text = bestScore.ToString();
+
+        if (soundBtn.image.sprite != null)
             soundBtn.image.sprite = soundOn;
     }
     public void Play()
     {
-        SceneManager.LoadScene("GameUI");
+        SceneManager.LoadScene(1);
     }
 
     public void restart()
@@ -34,7 +47,7 @@ public class Scenes : MonoBehaviour
     }
 
     public void menu() {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene(0);
     }
 
     public void quit()
